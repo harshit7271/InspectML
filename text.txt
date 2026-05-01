@@ -1,0 +1,167 @@
+You are a senior full-stack engineer and AI systems architect.
+
+Your task is to build a production-ready MVP of a B2B SaaS web application called "InspectML".
+
+-------------------------------------
+🧠 PRODUCT OVERVIEW
+-------------------------------------
+
+InspectML is an AI-powered QA tool that converts plain English software requirements into executable automated test code.
+
+INPUT:
+- Plain text requirements (user stories, feature descriptions)
+
+OUTPUT:
+- Fully runnable test automation code in:
+  1. Pytest (Python)
+  2. Playwright (JavaScript)
+
+The output MUST include:
+- Positive test cases
+- Negative test cases
+- Edge cases
+- Assertions
+- Clean, maintainable structure
+
+Do NOT generate pseudo-code or vague steps. Output must be executable.
+
+-------------------------------------
+🎯 CORE FEATURES (MVP ONLY)
+-------------------------------------
+
+1. Text input field for requirements
+2. Dropdown to select framework:
+   - Pytest
+   - Playwright
+3. "Generate Tests" button
+4. Output panel displaying generated code
+5. Copy-to-clipboard functionality
+
+No authentication, no payments, no dashboard.
+
+-------------------------------------
+🏗️ SYSTEM ARCHITECTURE
+-------------------------------------
+
+Frontend:
+- Next.js (React)
+- Clean minimal UI
+- Components:
+  - TextInput
+  - FrameworkSelector
+  - GenerateButton
+  - CodeOutput
+
+Backend:
+- FastAPI (Python)
+- REST endpoint:
+  POST /generate-tests
+
+Request:
+{
+  "requirement": "string",
+  "framework": "pytest" | "playwright"
+}
+
+Response:
+{
+  "code": "generated test code"
+}
+
+-------------------------------------
+🤖 AI INTEGRATION
+-------------------------------------
+
+Use an LLM API (abstracted layer) to generate test code.
+
+Design a prompt engineering system that:
+1. Parses the requirement
+2. Extracts:
+   - actors
+   - actions
+   - inputs
+   - expected outputs
+3. Expands into:
+   - happy path
+   - edge cases
+   - negative scenarios
+4. Converts into framework-specific test code
+
+-------------------------------------
+🧠 PROMPT TEMPLATE (VERY IMPORTANT)
+-------------------------------------
+
+Create a reusable prompt template like:
+
+"You are a senior QA automation engineer.
+
+Convert the following software requirement into executable {framework} test code.
+
+Requirement:
+{user_input}
+
+Instructions:
+- Generate multiple test cases
+- Include edge cases and negative scenarios
+- Use best practices of {framework}
+- Include assertions
+- Ensure code is runnable
+- Keep code clean and modular
+
+Output ONLY code. No explanations."
+
+-------------------------------------
+⚙️ BACKEND LOGIC
+-------------------------------------
+
+- Validate input
+- Select correct prompt template
+- Call LLM API
+- Return clean code response
+
+-------------------------------------
+🎨 FRONTEND REQUIREMENTS
+-------------------------------------
+
+- Minimal UI
+- Responsive design
+- Loading state while generating
+- Syntax-highlighted code block
+- Copy button
+
+-------------------------------------
+🧪 EXAMPLE
+
+Input:
+"User logs in with email and password. Invalid credentials show error."
+
+Output:
+- Multiple pytest or Playwright test cases
+- Includes invalid email, empty fields, etc.
+
+-------------------------------------
+🚨 STRICT RULES
+-------------------------------------
+
+- NO pseudo code
+- NO explanations in output
+- ONLY executable code
+- Follow best practices of frameworks
+- Keep architecture clean and modular
+
+-------------------------------------
+📦 DELIVERABLES
+-------------------------------------
+
+Generate:
+1. Full backend code (FastAPI)
+2. Frontend code (Next.js)
+3. API integration
+4. Prompt engineering logic
+5. Folder structure
+6. Instructions to run locally
+
+-------------------------------------
+
+Build this as if it will be shipped to real users.
+Code quality must be clean, modular, and production-ready.
